@@ -6,6 +6,10 @@ import {createStackNavigator} from 'react-navigation-stack';
 import TabBarIcon from '../components/TabBarIcon';
 import ListTasks from '../containers/ListTasks';
 import AddTask from '../containers/AddTask';
+import HomeScreen from '../screens/Home';
+import Loading from '../screens/Loading';
+import SignUp from '../screens/SignUp';
+import Login from '../screens/Login';
 
 const ListStack = createStackNavigator({
   List: ListTasks,
@@ -13,6 +17,32 @@ const ListStack = createStackNavigator({
 
 ListStack.navigationOptions = {
   tabBarLabel: 'List',
+  tabBarIcon: ({focused}) => (
+    <TabBarIcon
+      focused={focused}
+      name={
+        Platform.OS === 'ios'
+          ? `ios-information-circle${focused ? '' : '-outline'}`
+          : 'md-information-circle'
+      }
+    />
+  ),
+};
+
+const HomeStack = createStackNavigator(
+  {
+    Home: HomeScreen,
+    Loading: Loading,
+    SignUp: SignUp,
+    Login: Login,
+  },
+  {
+    initialRouteName: 'Loading',
+  },
+);
+
+HomeStack.navigationOptions = {
+  tabBarLabel: 'Home',
   tabBarIcon: ({focused}) => (
     <TabBarIcon
       focused={focused}
@@ -42,4 +72,5 @@ CreateStack.navigationOptions = {
 export default createBottomTabNavigator({
   ListStack,
   CreateStack,
+  HomeStack,
 });
