@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {StyleSheet, Text, TextInput, View, Button} from 'react-native';
+import firebase from 'react-native-firebase';
 
 const styles = StyleSheet.create({
   container: {
@@ -16,20 +17,27 @@ const styles = StyleSheet.create({
     marginTop: 8,
     marginVertical: 15,
   },
+  loginText: {color: '#e93766', fontSize: 40},
+  errorMessage: {color: 'red'},
+  signUpText: {color: '#e93766', fontSize: 18},
 });
 
-export default class Login extends React.Component {
+export default class Login extends Component {
   state = {email: '', password: '', errorMessage: null};
   handleLogin = () => {
-    // TODO: Firebase stuff...
-    console.log('handleLogin');
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(this.state.email, this.state.password)
+      .then(() => this.props.navigation.navigate('Home'))
+      .catch(error => this.setState({errorMessage: error.message}));
   };
+
   render() {
     return (
       <View style={styles.container}>
-        <Text style={{color: '#e93766', fontSize: 40}}>Login</Text>
+        <Text style={styles.loginText}>Login</Text>
         {this.state.errorMessage && (
-          <Text style={{color: 'red'}}>{this.state.errorMessage}</Text>
+          <Text style={styles.errorMessage}>{this.state.errorMessage}</Text>
         )}
         <TextInput
           style={styles.textInput}
@@ -53,7 +61,7 @@ export default class Login extends React.Component {
             Don't have an account?{' '}
             <Text
               onPress={() => this.props.navigation.navigate('SignUp')}
-              style={{color: '#e93766', fontSize: 18}}>
+              style={styles.signUpText}>
               {' '}
               Sign Up{' '}
             </Text>

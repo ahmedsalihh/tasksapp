@@ -1,12 +1,6 @@
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-  Button,
-  TouchableOpacity,
-} from 'react-native';
+import {StyleSheet, Text, TextInput, View, Button} from 'react-native';
+import firebase from 'react-native-firebase';
 
 const styles = StyleSheet.create({
   container: {
@@ -23,27 +17,37 @@ const styles = StyleSheet.create({
     marginTop: 8,
     marginVertical: 15,
   },
+  signUpText: {color: '#e93766', fontSize: 40},
+  errorMessage: {color: 'red'},
+  login: {color: '#e93766', fontSize: 18},
 });
 
 export default class SignUp extends React.Component {
-  state = {email: '', password: '', errorMessage: null};
+  constructor(props) {
+    super(props);
+    this.state = {email: '', password: '', errorMessage: null};
+  }
+
   handleSignUp = () => {
-    // TODO: For Firebase athu
-    console.log('handleSignUp');
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(this.state.email, this.state.password)
+      .then(() => this.props.navigation.navigate('Home'))
+      .catch(error => this.setState({errorMessage: error.message}));
   };
 
   render() {
     return (
       <View style={styles.container}>
-        <Text style={{color: '#e93766', fontSize: 40}}>Sign Up</Text>
+        <Text style={styles.signUpText}>Sign Up</Text>
         {this.state.errorMessage && (
-          <Text style={{color: 'red'}}>{this.state.errorMessage}</Text>
+          <Text style={styles.errorMessage}>{this.state.errorMessage}</Text>
         )}
         <TextInput
           placeholder="Email"
           autoCapitalize="none"
           style={styles.textInput}
-          onChangeText={email => this.state({email})}
+          onChangeText={email => this.setState({email})}
           value={this.state.email}
         />
         <TextInput
@@ -61,7 +65,7 @@ export default class SignUp extends React.Component {
             Already have an account?{' '}
             <Text
               onPress={() => this.props.navigation.navigate('login')}
-              style={{color: '#e93766', fontSize: 18}}>
+              style={styles.login}>
               {' '}
               Login{' '}
             </Text>
