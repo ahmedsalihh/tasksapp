@@ -71,13 +71,13 @@ const styles = StyleSheet.create({
     fontSize: 40,
   },
   addButton: {
-    height: '15%',
+    backgroundColor: '#e93766',
+    height: '10%',
     justifyContent: 'center',
-    backgroundColor: '#438eff',
     borderRadius: 10,
   },
   addButtonText: {
-    fontSize: 40,
+    fontSize: 35,
     color: '#fff',
     textAlign: 'center',
   },

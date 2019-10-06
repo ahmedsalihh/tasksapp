@@ -1,5 +1,12 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, TextInput, View, Button} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+  Button,
+  TouchableOpacity,
+} from 'react-native';
 import firebase from 'react-native-firebase';
 
 const styles = StyleSheet.create({
@@ -20,6 +27,18 @@ const styles = StyleSheet.create({
   loginText: {color: '#e93766', fontSize: 40},
   errorMessage: {color: 'red'},
   signUpText: {color: '#e93766', fontSize: 18},
+  loginButton: {
+    backgroundColor: '#e93766',
+    height: '8%',
+    justifyContent: 'center',
+    borderRadius: 10,
+    width: '20%',
+  },
+  loginButtonText: {
+    fontSize: 20,
+    color: '#fff',
+    textAlign: 'center',
+  },
 });
 
 export default class Login extends Component {
@@ -54,7 +73,10 @@ export default class Login extends Component {
           onChangeText={password => this.setState({password})}
           value={this.state.password}
         />
-        <Button title="Login" color="#e93766" onPress={this.handleLogin} />
+        {/* <Button title="Login" color="#e93766" onPress={this.handleLogin} /> */}
+        <TouchableOpacity style={styles.loginButton} onPress={this.handleLogin}>
+          <Text style={styles.loginButtonText}>Login</Text>
+        </TouchableOpacity>
         <View>
           <Text>
             {' '}

@@ -1,5 +1,12 @@
 import React from 'react';
-import {StyleSheet, Text, TextInput, View, Button} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+  Button,
+  TouchableOpacity,
+} from 'react-native';
 import firebase from 'react-native-firebase';
 
 const styles = StyleSheet.create({
@@ -20,6 +27,18 @@ const styles = StyleSheet.create({
   signUpText: {color: '#e93766', fontSize: 40},
   errorMessage: {color: 'red'},
   login: {color: '#e93766', fontSize: 18},
+  signUpButton: {
+    backgroundColor: '#e93766',
+    height: '8%',
+    justifyContent: 'center',
+    borderRadius: 10,
+    width: '25%',
+  },
+  signUpButtonText: {
+    fontSize: 20,
+    color: '#fff',
+    textAlign: 'center',
+  },
 });
 
 export default class SignUp extends React.Component {
@@ -58,13 +77,23 @@ export default class SignUp extends React.Component {
           onChangeText={password => this.setState({password})}
           value={this.state.password}
         />
-        <Button title="Sign Up" color="#e93766" onPress={this.handleSignUp} />
+        {/* <Button
+          title="Sign Up"
+          color="#e93766"
+          onPress={this.handleSignUp}
+          style={{width: '50%'}}
+        /> */}
+        <TouchableOpacity
+          style={styles.signUpButton}
+          onPress={this.handleSignUp}>
+          <Text style={styles.signUpButtonText}>Sign Up</Text>
+        </TouchableOpacity>
         <View>
           <Text>
             {' '}
             Already have an account?{' '}
             <Text
-              onPress={() => this.props.navigation.navigate('login')}
+              onPress={() => this.props.navigation.navigate('Login')}
               style={styles.login}>
               {' '}
               Login{' '}

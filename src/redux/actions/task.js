@@ -4,7 +4,7 @@ import axios from 'axios';
 export const tasks = () => {
   return dispatch => {
     axios
-      .get('http://192.168.0.1:5000/api/v1/tasks')
+      .get('http://192.168.0.10:5000/api/v1/tasks')
       .then(res => {
         dispatch({type: LIST_TASKS, payload: res.data.data});
       })
@@ -17,7 +17,7 @@ export const tasks = () => {
 export const addTasks = task => {
   return dispatch => {
     axios
-      .post('http://192.168.0.1:5000/api/v1/tasks', task)
+      .post('http://192.168.0.10:5000/api/v1/tasks', task)
       .then(res => {
         dispatch({type: ADD_TASK, payload: res.data.data});
       })
@@ -30,7 +30,7 @@ export const addTasks = task => {
 export const deleteTask = id => {
   return dispatch => {
     axios
-      .delete(`http://192.168.0.1:5000/api/v1/tasks/${id}`)
+      .delete(`http://192.168.0.10:5000/api/v1/tasks/${id}`)
       .then(res => {
         dispatch({type: DELETE_TASK, payload: res.data.message});
       })

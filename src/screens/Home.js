@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, Button} from 'react-native';
 import firebase from 'react-native-firebase';
 
 export default class Home extends React.Component {
@@ -9,6 +9,10 @@ export default class Home extends React.Component {
     const {currentUser} = firebase.auth();
     this.setState({currentUser});
   }
+  handleLogout = () => {
+    firebase.auth().signOut();
+    this.setState({currentUser: null});
+  };
 
   render() {
     const {currentUser} = this.state;
@@ -21,6 +25,9 @@ export default class Home extends React.Component {
             {currentUser && currentUser.email}!
           </Text>
         </Text>
+        <Button title="Logout" color="#e93766" onPress={this.handleLogout}>
+          Logout
+        </Button>
       </View>
     );
   }
