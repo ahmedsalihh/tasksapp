@@ -1,29 +1,31 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import {StyleSheet, Text, View, Button} from 'react-native';
 import firebase from 'react-native-firebase';
+import {save, cleanUser} from '../redux/actions/user';
 
-export default class Home extends React.Component {
+class Home extends React.Component {
   state = {currentUser: null};
 
-  componentDidMount() {
-    const {currentUser} = firebase.auth();
-    this.setState({currentUser});
+  async componentDidMount() {
+    const {currentUser: user} = firebase.auth();
+    this.props.saveUser({user});
+    // this.setState({currentUser});
   }
   handleLogout = () => {
     firebase.auth().signOut();
-    this.setState({currentUser: null});
+    this.props.cleanUser();
+    // this.setState({currentUser: null});
   };
 
   render() {
-    const {currentUser} = this.state;
+    const {user} = this.props;
     return (
       <View style={styles.container}>
         <Text style={styles.textContainer}>
           {' '}
           Hi
-          <Text style={styles.emailText}>
-            {currentUser && currentUser.email}!
-          </Text>
+          <Text style={styles.emailText}>{user && user.email}!</Text>
         </Text>
         <Button title="Logout" color="#e93766" onPress={this.handleLogout}>
           Logout
@@ -32,6 +34,29 @@ export default class Home extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    user: state.user.user,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    saveUser: user => {
+      dispatch(save(user));
+    },
+    cleanUser: () => {
+      dispatch(cleanUser());
+    },
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Home);
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

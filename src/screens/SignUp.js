@@ -1,13 +1,15 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import {
   StyleSheet,
   Text,
   TextInput,
   View,
-  Button,
   TouchableOpacity,
 } from 'react-native';
 import firebase from 'react-native-firebase';
+import {save} from '../redux/actions/user';
+import {saveUser} from '../api/userApi';
 
 const styles = StyleSheet.create({
   container: {
@@ -47,11 +49,17 @@ export default class SignUp extends React.Component {
     this.state = {email: '', password: '', errorMessage: null};
   }
 
-  handleSignUp = () => {
-    firebase
+  handleSignUp = async () => {
+    await firebase
       .auth()
       .createUserWithEmailAndPassword(this.state.email, this.state.password)
-      .then(() => this.props.navigation.navigate('Home'))
+      .then(async () => {
+        const {currentUser: user} = firebase.auth();
+        if (user !== undefined) {
+          await saveUser({user});
+        }
+        this.props.navigation.navigate('Home');
+      })
       .catch(error => this.setState({errorMessage: error.message}));
   };
 

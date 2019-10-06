@@ -1,10 +1,10 @@
 import {combineReducers} from 'redux';
-import placeReducer from './placeReducer';
+import userReducer from './userReducer';
 import taskReducer from './taskReducer';
 
 const rootReducer = combineReducers({
-  places: placeReducer,
   tasks: taskReducer,
+  user: userReducer,
 });
 
 export default rootReducer;
