@@ -4,7 +4,6 @@ import {
   Text,
   TextInput,
   View,
-  Button,
   TouchableOpacity,
 } from 'react-native';
 import firebase from 'react-native-firebase';
@@ -73,7 +72,6 @@ export default class Login extends Component {
           onChangeText={password => this.setState({password})}
           value={this.state.password}
         />
-        {/* <Button title="Login" color="#e93766" onPress={this.handleLogin} /> */}
         <TouchableOpacity style={styles.loginButton} onPress={this.handleLogin}>
           <Text style={styles.loginButtonText}>Login</Text>
         </TouchableOpacity>

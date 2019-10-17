@@ -50,17 +50,22 @@ export default class SignUp extends React.Component {
   }
 
   handleSignUp = async () => {
-    await firebase
-      .auth()
-      .createUserWithEmailAndPassword(this.state.email, this.state.password)
-      .then(async () => {
-        const {currentUser: user} = firebase.auth();
-        if (user !== undefined) {
-          await saveUser({user});
-        }
-        this.props.navigation.navigate('Home');
-      })
-      .catch(error => this.setState({errorMessage: error.message}));
+    const {email, password} = this.state;
+    if (email === '' || password === '') {
+      this.setState({errorMessage: 'Fill all the fields!!'});
+    } else {
+      await firebase
+        .auth()
+        .createUserWithEmailAndPassword(email, password)
+        .then(async () => {
+          const {currentUser: user} = firebase.auth();
+          if (user !== undefined) {
+            await saveUser({user});
+          }
+          this.props.navigation.navigate('Home');
+        })
+        .catch(error => this.setState({errorMessage: error.message}));
+    }
   };
 
   render() {

@@ -1,14 +1,13 @@
 import React from 'react';
-import {Platform} from 'react-native';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 import {createStackNavigator} from 'react-navigation-stack';
 
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faHome, faList, faPlus} from '@fortawesome/free-solid-svg-icons';
 
-import TabBarIcon from '../components/TabBarIcon';
 import ListTasks from '../containers/ListTasks';
 import AddTask from '../containers/AddTask';
+import GroupAdd from '../containers/GroupAdd';
 import HomeScreen from '../screens/Home';
 import Loading from '../screens/Loading';
 import SignUp from '../screens/SignUp';
@@ -29,6 +28,7 @@ const HomeStack = createStackNavigator(
     Loading: Loading,
     SignUp: SignUp,
     Login: Login,
+    Group: GroupAdd,
   },
   {
     initialRouteName: 'Loading',

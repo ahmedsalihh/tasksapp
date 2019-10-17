@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {StyleSheet, Text, View, Button} from 'react-native';
+import {StyleSheet, Text, View, Button, TouchableOpacity} from 'react-native';
 import firebase from 'react-native-firebase';
 import {save, cleanUser} from '../redux/actions/user';
 
@@ -10,12 +10,15 @@ class Home extends React.Component {
   async componentDidMount() {
     const {currentUser: user} = firebase.auth();
     this.props.saveUser({user});
-    // this.setState({currentUser});
   }
+
   handleLogout = () => {
     firebase.auth().signOut();
     this.props.cleanUser();
-    // this.setState({currentUser: null});
+  };
+
+  handleAddGroupClick = () => {
+    this.props.navigation.navigate('Group');
   };
 
   render() {
@@ -30,6 +33,11 @@ class Home extends React.Component {
         <Button title="Logout" color="#e93766" onPress={this.handleLogout}>
           Logout
         </Button>
+        <TouchableOpacity
+          style={styles.addGroupButton}
+          onPress={this.handleAddGroupClick}>
+          <Text style={styles.addGroupButtonText}>+</Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -70,4 +78,16 @@ const styles = StyleSheet.create({
     color: '#e93766',
     fontSize: 20,
   },
+  addGroupButton: {
+    borderRadius: 400,
+    height: 50,
+    width: 50,
+    position: 'absolute',
+    bottom: 5,
+    right: 5,
+    backgroundColor: '#e93766',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  addGroupButtonText: {color: 'white', fontSize: 50},
 });
