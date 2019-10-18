@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {StyleSheet, Text, View, Button, TouchableOpacity} from 'react-native';
 import firebase from 'react-native-firebase';
 import {save, cleanUser} from '../redux/actions/user';
+import GroupList from '../components/GroupList';
 
 class Home extends React.Component {
   state = {currentUser: null};
@@ -25,14 +26,15 @@ class Home extends React.Component {
     const {user} = this.props;
     return (
       <View style={styles.container}>
-        <Text style={styles.textContainer}>
+        {/* <Text style={styles.textContainer}>
           {' '}
           Hi
           <Text style={styles.emailText}>{user && user.email}!</Text>
         </Text>
         <Button title="Logout" color="#e93766" onPress={this.handleLogout}>
           Logout
-        </Button>
+        </Button> */}
+        <GroupList />
         <TouchableOpacity
           style={styles.addGroupButton}
           onPress={this.handleAddGroupClick}>

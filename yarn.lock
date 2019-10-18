@@ -5307,6 +5307,20 @@ react-native-gesture-handler@^1.4.1:
     invariant "^2.2.4"
     prop-types "^15.7.2"
 
+react-native-material-cards@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/react-native-material-cards/-/react-native-material-cards-1.0.9.tgz#fe200c3b9551abae346e231c10abea662cec48f7"
+  integrity sha512-TscOwr+oaFqhBfeekQ5YXKV6rZkFvyqKGlxHYaIC4juPAV3qn1k0lOMKS7H9l6ag9jSDeKV6kqpSPOgiL7NQEQ==
+  dependencies:
+    prop-types "^15.5.10"
+
+react-native-material-ripple@^0.9.1:
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/react-native-material-ripple/-/react-native-material-ripple-0.9.1.tgz#db1ad9dd7cf97011e4cd8475ae2041ade0f891cb"
+  integrity sha512-dHjARdKoGD3LXwPh2TkURabywM5BfdpKc/AHplJTfBMalhVZ2bc7iJoJmNhNnmT/TZ+B3szL6uV1mO7Pv8zNeA==
+  dependencies:
+    prop-types "^15.5.10"
+
 react-native-ratings@^6.3.0:
   version "6.5.0"
   resolved "https://registry.yarnpkg.com/react-native-ratings/-/react-native-ratings-6.5.0.tgz#a1606ccba3c5b54eec8e6cfa4765a45cf0e4ab8d"
