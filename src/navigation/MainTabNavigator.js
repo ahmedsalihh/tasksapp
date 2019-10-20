@@ -7,7 +7,7 @@ import {faHome, faList, faPlus} from '@fortawesome/free-solid-svg-icons';
 
 import ListTasks from '../containers/ListTasks';
 import AddTask from '../containers/AddTask';
-import GroupAdd from '../containers/GroupAdd';
+import AddGroup from '../containers/AddGroup';
 import HomeScreen from '../screens/Home';
 import Loading from '../screens/Loading';
 import SignUp from '../screens/SignUp';
@@ -28,7 +28,7 @@ const HomeStack = createStackNavigator(
     Loading: Loading,
     SignUp: SignUp,
     Login: Login,
-    Group: GroupAdd,
+    Group: AddGroup,
   },
   {
     initialRouteName: 'Loading',

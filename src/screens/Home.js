@@ -1,9 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {StyleSheet, Text, View, Button, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import firebase from 'react-native-firebase';
 import {save, cleanUser} from '../redux/actions/user';
-import GroupList from '../components/GroupList';
+import ListGroups from '../containers/ListGroups';
 
 class Home extends React.Component {
   state = {currentUser: null};
@@ -23,7 +23,7 @@ class Home extends React.Component {
   };
 
   render() {
-    const {user} = this.props;
+    // const {user} = this.props;
     return (
       <View style={styles.container}>
         {/* <Text style={styles.textContainer}>
@@ -34,7 +34,7 @@ class Home extends React.Component {
         <Button title="Logout" color="#e93766" onPress={this.handleLogout}>
           Logout
         </Button> */}
-        <GroupList />
+        <ListGroups />
         <TouchableOpacity
           style={styles.addGroupButton}
           onPress={this.handleAddGroupClick}>

@@ -7,18 +7,27 @@ const groups = [
   {groupName: 'group2', groupDesc: 'desc'},
 ];
 
-const GroupList = () => {
-  return (
-    <ScrollView>
-      <View>
-        <FlatList
-          data={groups}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={group => <GroupCard group={group.item} />}
-        />
-      </View>
-    </ScrollView>
-  );
-};
+class GroupList extends React.Component {
+  componentDidMount() {
+    this.props.listGroups();
+  }
+
+  //   componentDidUpdate() {
+  //     this.props.listGroups();
+  //   }
+  render() {
+    return (
+      <ScrollView>
+        <View>
+          <FlatList
+            data={this.props.groups.groups}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={group => <GroupCard group={group.item} />}
+          />
+        </View>
+      </ScrollView>
+    );
+  }
+}
 
 export default GroupList;

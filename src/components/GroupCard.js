@@ -39,8 +39,8 @@ const GroupCard = props => {
         style={styles.groupButton}
         // onPress={this.placeSubmitHandler}
       >
-        <Text style={styles.groupName}>{props.group.groupName}</Text>
-        <Text style={styles.groupDesc}>{props.group.groupDesc}</Text>
+        <Text style={styles.groupName}>{props.group.name}</Text>
+        <Text style={styles.groupDesc}>{props.group.type}</Text>
       </TouchableOpacity>
     </View>
   );
