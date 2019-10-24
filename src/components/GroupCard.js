@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: '1%',
+    marginTop: '2%',
     paddingLeft: '2%',
     paddingRight: '2%',
     backgroundColor: '#fff',
@@ -33,12 +33,14 @@ const styles = StyleSheet.create({
 });
 
 const GroupCard = props => {
+  const placeSubmitHandler = ({selectedItemId}) => {
+    props.handleSelectedItem({selectedItemId});
+  };
   return (
     <View style={styles.container}>
       <TouchableOpacity
         style={styles.groupButton}
-        // onPress={this.placeSubmitHandler}
-      >
+        onPress={() => placeSubmitHandler({selectedItemId: props.group._id})}>
         <Text style={styles.groupName}>{props.group.name}</Text>
         <Text style={styles.groupDesc}>{props.group.type}</Text>
       </TouchableOpacity>

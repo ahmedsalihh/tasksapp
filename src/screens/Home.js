@@ -1,6 +1,12 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  SafeAreaView,
+} from 'react-native';
 import firebase from 'react-native-firebase';
 import {save, cleanUser} from '../redux/actions/user';
 import ListGroups from '../containers/ListGroups';
@@ -23,18 +29,11 @@ class Home extends React.Component {
   };
 
   render() {
-    // const {user} = this.props;
     return (
       <View style={styles.container}>
-        {/* <Text style={styles.textContainer}>
-          {' '}
-          Hi
-          <Text style={styles.emailText}>{user && user.email}!</Text>
-        </Text>
-        <Button title="Logout" color="#e93766" onPress={this.handleLogout}>
-          Logout
-        </Button> */}
-        <ListGroups />
+        <SafeAreaView>
+          <ListGroups />
+        </SafeAreaView>
         <TouchableOpacity
           style={styles.addGroupButton}
           onPress={this.handleAddGroupClick}>
@@ -70,15 +69,10 @@ export default connect(
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center',
-  },
-  textContainer: {
-    fontSize: 20,
-  },
-  emailText: {
-    color: '#e93766',
-    fontSize: 20,
+    alignItems: 'flex-start',
+    height: '100%',
   },
   addGroupButton: {
     borderRadius: 400,
@@ -86,8 +80,8 @@ const styles = StyleSheet.create({
     width: 50,
     position: 'absolute',
     bottom: 5,
-    right: 5,
-    backgroundColor: '#e93766',
+    right: 8,
+    backgroundColor: '#cf1748',
     alignItems: 'center',
     justifyContent: 'center',
   },

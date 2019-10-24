@@ -1,33 +1,42 @@
 import React from 'react';
-import {ScrollView, FlatList, View} from 'react-native';
+import {FlatList, View} from 'react-native';
 import GroupCard from './GroupCard';
-
-const groups = [
-  {groupName: 'group1', groupDesc: 'desc'},
-  {groupName: 'group2', groupDesc: 'desc'},
-];
+import {withNavigation} from 'react-navigation';
 
 class GroupList extends React.Component {
+  static navigationOptions = {
+    title: 'Group List',
+  };
+
   componentDidMount() {
     this.props.listGroups();
   }
 
-  //   componentDidUpdate() {
-  //     this.props.listGroups();
-  //   }
+  componentDidUpdate() {
+    this.props.listGroups();
+  }
+
+  handleSelectedItem = ({selectedItemId}) => {
+    this.props.setSelectedItemId({selectedItemId});
+    this.props.navigation.navigate('List');
+  };
+
   render() {
     return (
-      <ScrollView>
-        <View>
-          <FlatList
-            data={this.props.groups.groups}
-            keyExtractor={(item, index) => index.toString()}
-            renderItem={group => <GroupCard group={group.item} />}
-          />
-        </View>
-      </ScrollView>
+      <View>
+        <FlatList
+          data={this.props.groups.groups}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={group => (
+            <GroupCard
+              handleSelectedItem={this.handleSelectedItem}
+              group={group.item}
+            />
+          )}
+        />
+      </View>
     );
   }
 }
 
-export default GroupList;
+export default withNavigation(GroupList);

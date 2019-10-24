@@ -1,7 +1,7 @@
 import React from 'react';
-import {ScrollView, FlatList, View} from 'react-native';
+import {SafeAreaView, FlatList, View} from 'react-native';
 
-import ListItem from '../components/ListItem';
+import TaskCard from '../components/TaskCard';
 
 class HomeScreen extends React.Component {
   state = {
@@ -31,7 +31,7 @@ class HomeScreen extends React.Component {
         data={this.props.tasks}
         keyExtractor={(item, index) => index.toString()}
         renderItem={task => (
-          <ListItem task={task.item} handleDelete={this.handleDelete} />
+          <TaskCard task={task.item} handleDelete={this.handleDelete} />
         )}
       />
     );
@@ -39,9 +39,9 @@ class HomeScreen extends React.Component {
 
   render() {
     return (
-      <ScrollView>
+      <SafeAreaView>
         <View>{this.placesOutput()}</View>
-      </ScrollView>
+      </SafeAreaView>
     );
   }
 }

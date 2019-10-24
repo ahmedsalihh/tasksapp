@@ -5,6 +5,7 @@ import {
   ADD_GROUP_REJECTED,
   DELETE_GROUP,
   DELETE_GROUP_REJECTED,
+  SET_SELECTED_ITEM_ID,
 } from './types';
 import axios from 'axios';
 
@@ -44,5 +45,11 @@ export const deleteGroup = id => {
       .catch(err => {
         dispatch({type: DELETE_GROUP_REJECTED, payload: err});
       });
+  };
+};
+
+export const setSelectedItemId = ({selectedItemId}) => {
+  return dispatch => {
+    dispatch({type: SET_SELECTED_ITEM_ID, payload: selectedItemId});
   };
 };

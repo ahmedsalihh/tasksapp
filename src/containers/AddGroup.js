@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 
-import AddGroup from '../components/AddGroup';
+import GroupAdd from '../components/GroupAdd';
 
 import {addGroup} from '../redux/actions/group';
 
@@ -21,4 +21,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(AddGroup);
+)(GroupAdd);

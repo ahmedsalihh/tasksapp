@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import GroupList from '../components/GroupList';
 
-import {listGroups} from '../redux/actions/group';
+import {listGroups, setSelectedItemId} from '../redux/actions/group';
 
 const mapStateToProps = state => {
   return {
@@ -13,6 +13,9 @@ const mapDispatchToProps = dispatch => {
   return {
     listGroups: () => {
       dispatch(listGroups());
+    },
+    setSelectedItemId: ({selectedItemId}) => {
+      dispatch(setSelectedItemId({selectedItemId}));
     },
   };
 };

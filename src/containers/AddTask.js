@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 
-import AddScreen from '../screens/AddScreen';
+import TaskAdd from '../components/TaskAdd';
 
 import {addTasks} from '../redux/actions/task';
 
@@ -21,4 +21,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(AddScreen);
+)(TaskAdd);
