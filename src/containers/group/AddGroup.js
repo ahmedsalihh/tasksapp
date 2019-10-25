@@ -1,8 +1,8 @@
 import {connect} from 'react-redux';
 
-import GroupAdd from '../components/GroupAdd';
+import GroupAdd from '../../components/group/GroupAdd';
 
-import {addGroup} from '../redux/actions/group';
+import {addGroup} from '../../redux/actions/group';
 
 const mapStateToProps = state => {
   return {

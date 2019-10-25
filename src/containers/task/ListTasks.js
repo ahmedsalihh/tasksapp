@@ -1,19 +1,16 @@
 import {connect} from 'react-redux';
-import TaskList from '../components/TaskList';
+import TaskList from '../../components/task/TaskList';
 
-import {tasks, deleteTask} from '../redux/actions/task';
+import {deleteTask} from '../../redux/actions/task';
 
 const mapStateToProps = state => {
   return {
-    tasks: state.tasks.tasks,
+    groups: state.groups,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    list: () => {
-      dispatch(tasks());
-    },
     delete: id => {
       dispatch(deleteTask(id));
     },

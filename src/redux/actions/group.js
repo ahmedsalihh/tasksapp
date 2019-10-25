@@ -6,6 +6,7 @@ import {
   DELETE_GROUP,
   DELETE_GROUP_REJECTED,
   SET_SELECTED_ITEM_ID,
+  // SELECTED_GROUP_TASKS,
 } from './types';
 import axios from 'axios';
 
@@ -47,6 +48,19 @@ export const deleteGroup = id => {
       });
   };
 };
+
+// export const listTasks = selectedItemId => {
+//   return dispatch => {
+//     axios
+//       .get(`http://192.168.0.10:5000/api/v1/groups/${selectedItemId}`)
+//       .then(res => {
+//         dispatch({
+//           type: SELECTED_GROUP_TASKS,
+//           payload: {selectedGroupTasks: res.data.data},
+//         });
+//       });
+//   };
+// };
 
 export const setSelectedItemId = ({selectedItemId}) => {
   return dispatch => {

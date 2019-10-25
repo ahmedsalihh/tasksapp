@@ -5,9 +5,9 @@ import {createStackNavigator} from 'react-navigation-stack';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faHome, faList} from '@fortawesome/free-solid-svg-icons';
 
-import ListTasks from '../containers/ListTasks';
-import AddTask from '../containers/AddTask';
-import AddGroup from '../containers/AddGroup';
+import ListTasks from '../containers/task/ListTasks';
+import AddTask from '../containers/task/AddTask';
+import AddGroup from '../containers/group/AddGroup';
 import HomeScreen from '../screens/Home';
 import Loading from '../screens/Loading';
 import SignUp from '../screens/SignUp';

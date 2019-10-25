@@ -1,34 +1,24 @@
 import React from 'react';
 import {SafeAreaView, FlatList, View} from 'react-native';
 
-import TaskCard from '../components/TaskCard';
+import TaskCard from './TaskCard';
 
 class HomeScreen extends React.Component {
-  state = {
-    placeName: '',
-    places: [],
-  };
-
   static navigationOptions = {
     title: 'Task List',
   };
-
-  componentDidMount() {
-    this.props.list();
-  }
-
-  componentDidUpdate() {
-    this.props.list();
-  }
 
   handleDelete = id => {
     this.props.delete(id);
   };
 
   placesOutput = () => {
+    const {groups, selectedItemId} = this.props.groups;
+    const group = groups.find(item => item._id === selectedItemId);
+    const {taskList} = group;
     return (
       <FlatList
-        data={this.props.tasks}
+        data={taskList}
         keyExtractor={(item, index) => index.toString()}
         renderItem={task => (
           <TaskCard task={task.item} handleDelete={this.handleDelete} />

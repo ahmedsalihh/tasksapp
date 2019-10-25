@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import firebase from 'react-native-firebase';
 import {save, cleanUser} from '../redux/actions/user';
-import ListGroups from '../containers/ListGroups';
+import ListGroups from '../containers/group/ListGroups';
 
 class Home extends React.Component {
   state = {currentUser: null};

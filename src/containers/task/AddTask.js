@@ -1,8 +1,8 @@
 import {connect} from 'react-redux';
 
-import TaskAdd from '../components/TaskAdd';
+import TaskAdd from '../../components/task/TaskAdd';
 
-import {addTasks} from '../redux/actions/task';
+import {addTasks} from '../../redux/actions/task';
 
 const mapStateToProps = state => {
   return {

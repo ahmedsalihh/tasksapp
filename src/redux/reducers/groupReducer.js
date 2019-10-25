@@ -6,6 +6,7 @@ import {
   DELETE_GROUP,
   DELETE_GROUP_REJECTED,
   SET_SELECTED_ITEM_ID,
+  SELECTED_GROUP_TASKS,
 } from '../actions/types';
 
 export default (state = {groups: [], selectedItemId: ''}, action) => {
@@ -19,6 +20,8 @@ export default (state = {groups: [], selectedItemId: ''}, action) => {
     case LIST_GROUPS:
       return {...state, fetched: true, groups: action.payload};
     case SET_SELECTED_ITEM_ID:
+      return {...state, fetched: true, selectedItemId: action.payload};
+    case SELECTED_GROUP_TASKS:
       return {...state, fetched: true, groups: action.payload};
     default:
       return state;

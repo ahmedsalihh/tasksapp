@@ -13,7 +13,7 @@ const ListItem = props => {
       <View style={styles.imageContainer}>
         <TouchableOpacity activeOpacity={0.5} onPress={handleDelete}>
           <Image
-            source={require('../assets/images/android/outline_delete_white_24.png')}
+            source={require('../../assets/images/android/outline_delete_white_24.png')}
             style={styles.imageIconStyle}
           />
         </TouchableOpacity>
