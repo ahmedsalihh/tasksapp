@@ -1,24 +1,41 @@
 import React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+  // CheckBox,
+} from 'react-native';
+import CheckBox from '@react-native-community/checkbox';
+// import {CheckBox} from 'react-native-elements';
 
 const ListItem = props => {
-  const handleDelete = () => {
-    props.handleDelete(props.task._id);
-  };
   return (
     <View style={styles.container}>
-      <View style={styles.textContainer}>
-        <Text style={styles.taskName}>{props.task.name}</Text>
-      </View>
-      <View style={styles.imageContainer}>
-        <TouchableOpacity activeOpacity={0.5} onPress={handleDelete}>
-          <Image
-            source={require('../../assets/images/android/outline_delete_white_24.png')}
-            style={styles.imageIconStyle}
-          />
-        </TouchableOpacity>
-      </View>
+      <CheckBox
+        value={props.task.task_status}
+        onValueChange={() =>
+          props.setChecked({
+            task: {...props.task, task_status: !props.task.task_status},
+          })
+        }
+      />
+      <Text>{props.task.name}</Text>
     </View>
+    // <View style={styles.container}>
+    //   <View style={styles.textContainer}>
+    //     <Text style={styles.taskName}>{props.task.name}</Text>
+    //   </View>
+    //   <View style={styles.imageContainer}>
+    //     <TouchableOpacity activeOpacity={0.5} onPress={handleDelete}>
+    //       <Image
+    //         source={require('../../assets/images/android/outline_delete_white_24.png')}
+    //         style={styles.imageIconStyle}
+    //       />
+    //     </TouchableOpacity>
+    //   </View>
+    // </View>
   );
 };
 
@@ -26,13 +43,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#e93766',
-    borderWidth: 0.5,
-    borderColor: '#fff',
-    borderRadius: 5,
-    margin: 5,
+    alignItems: 'stretch',
   },
   textContainer: {
     flex: 1,
@@ -43,7 +54,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
   },
   taskName: {
-    color: '#fff',
+    color: '#000',
     fontSize: 20,
     textAlign: 'left',
     paddingLeft: '5%',

@@ -69,10 +69,6 @@ export default connect(
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'flex-start',
-    height: '100%',
   },
   addGroupButton: {
     borderRadius: 400,

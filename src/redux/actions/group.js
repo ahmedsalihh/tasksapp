@@ -6,7 +6,8 @@ import {
   DELETE_GROUP,
   DELETE_GROUP_REJECTED,
   SET_SELECTED_ITEM_ID,
-  // SELECTED_GROUP_TASKS,
+  UPDATE_TASK,
+  UPDATE_TASK_REJECTED,
 } from './types';
 import axios from 'axios';
 
@@ -45,6 +46,19 @@ export const deleteGroup = id => {
       })
       .catch(err => {
         dispatch({type: DELETE_GROUP_REJECTED, payload: err});
+      });
+  };
+};
+
+export const setChecked = ({task, groupId}) => {
+  return dispatch => {
+    axios
+      .put(`http://192.168.0.10:5000/api/v1//updateTask/${groupId}`, {task})
+      .then(res => {
+        dispatch({type: UPDATE_TASK, payload: {group: res.data.result}});
+      })
+      .catch(err => {
+        dispatch({type: UPDATE_TASK_REJECTED, payload: err});
       });
   };
 };
