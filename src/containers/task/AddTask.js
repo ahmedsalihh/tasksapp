@@ -1,24 +1,22 @@
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 import TaskAdd from '../../components/task/TaskAdd';
 
-import {addTasks} from '../../redux/actions/task';
+import { addTaskToGroup } from '../../redux/actions/group';
 
 const mapStateToProps = state => {
   return {
-    tasks: state.tasks.tasks,
+    tasks: state.groups.tasks,
+    groupId: state.groups.selectedItemId,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    add: task => {
-      dispatch(addTasks(task));
+    addTaskToGroup: ({ task, groupId }) => {
+      dispatch(addTaskToGroup({ task, groupId }));
     },
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(TaskAdd);
+export default connect(mapStateToProps, mapDispatchToProps)(TaskAdd);

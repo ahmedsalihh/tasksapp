@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  Text,
-  View,
-  StyleSheet,
-  TouchableOpacity,
-  TouchableHighlight,
-  Image,
-} from 'react-native';
+import {Text, View, StyleSheet, TouchableHighlight, Image} from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -29,8 +22,7 @@ const GroupCard = props => {
     props.handleSelectedItem({selectedItemId});
   };
   return (
-    <TouchableHighlight
-      onPress={() => groupSelectHandler({selectedItemId: props.group._id})}>
+    <TouchableHighlight onPress={() => groupSelectHandler({selectedItemId: props.group._id})}>
       <View style={styles.container}>
         <Image source={img} style={styles.img} />
         <View style={styles.textView}>
@@ -39,14 +31,6 @@ const GroupCard = props => {
         </View>
       </View>
     </TouchableHighlight>
-    // <View style={styles.container}>
-    //   <TouchableOpacity
-    //     style={styles.groupButton}
-    //     onPress={() => placeSubmitHandler({selectedItemId: props.group._id})}>
-    //     <Text style={styles.groupName}>{props.group.name}</Text>
-    //     <Text style={styles.groupDesc}>{props.group.type}</Text>
-    //   </TouchableOpacity>
-    // </View>
   );
 };
 

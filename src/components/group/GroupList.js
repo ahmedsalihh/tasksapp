@@ -12,8 +12,10 @@ class GroupList extends React.Component {
     this.props.listGroups();
   }
 
-  componentDidUpdate() {
-    this.props.listGroups();
+  componentDidUpdate(prevProps) {
+    if (Object.is(prevProps.groups, this.props.groups)) {
+      this.props.listGroups();
+    }
   }
 
   handleSelectedItem = ({selectedItemId}) => {
@@ -28,10 +30,7 @@ class GroupList extends React.Component {
           data={this.props.groups.groups}
           keyExtractor={(item, index) => index.toString()}
           renderItem={group => (
-            <GroupCard
-              handleSelectedItem={this.handleSelectedItem}
-              group={group.item}
-            />
+            <GroupCard handleSelectedItem={this.handleSelectedItem} group={group.item} />
           )}
         />
       </View>

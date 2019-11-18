@@ -12,6 +12,7 @@ export default class AddScreen extends React.Component {
     super(props);
     this.state = {
       taskName: '',
+      taskDesc: '',
     };
   }
   static navigationOptions = {
@@ -19,22 +20,14 @@ export default class AddScreen extends React.Component {
     title: 'Create Task',
   };
 
-  placeSubmitHandler = () => {
-    if (this.state.taskName.trim() === '') {
+  taskSubmitHandler = () => {
+    const { taskName, taskDesc } = this.state;
+    if (taskName.trim() === '') {
       return;
     }
-    try {
-      this.props.add({name: this.state.taskName});
-      this.setState({taskName: ''});
-    } catch (error) {
-      console.log('Unknown Exception');
-    }
-  };
-
-  onInputChange = value => {
-    this.setState({
-      taskName: value,
-    });
+    const task = { name: taskName, desc: taskDesc };
+    this.props.addTaskToGroup({ task, groupId: this.props.groupId });
+    this.setState({ taskName: '', taskDesc: '' });
   };
 
   render() {
@@ -42,13 +35,19 @@ export default class AddScreen extends React.Component {
       <View style={styles.container}>
         <TextInput
           style={styles.taskName}
-          placeholder="Task"
+          placeholder={'Task Name'}
           value={this.state.taskName}
-          onChangeText={this.onInputChange}
+          onChangeText={val => this.setState({ taskName: val })}
+        />
+        <TextInput
+          style={styles.taskName}
+          placeholder={'Task Description'}
+          value={this.state.taskDesc}
+          onChangeText={val => this.setState({ taskDesc: val })}
         />
         <TouchableOpacity
           style={styles.addButton}
-          onPress={this.placeSubmitHandler}>
+          onPress={this.taskSubmitHandler}>
           <Text style={styles.addButtonText}>Add Task</Text>
         </TouchableOpacity>
       </View>

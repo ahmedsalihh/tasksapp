@@ -13,8 +13,8 @@ const ListItem = props => {
                 task: {...props.task, task_status: !props.task.task_status},
               })
             }
-            borderColor="#cf1748"
-            fillColor="#cf1748"
+            borderColor={'#cf1748'}
+            fillColor={'#cf1748'}
             isChecked={props.task.task_status}
             text={props.task.name}
           />

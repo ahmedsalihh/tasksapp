@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  StyleSheet,
-  View,
-  TextInput,
-  TouchableOpacity,
-  Text,
-} from 'react-native';
+import {StyleSheet, View, TextInput, TouchableOpacity, Text} from 'react-native';
 
 export default class AddGroup extends React.Component {
   constructor(props) {
@@ -49,19 +43,17 @@ export default class AddGroup extends React.Component {
       <View style={styles.container}>
         <TextInput
           style={styles.groupName}
-          placeholder="Group Name"
+          placeholder={'Group Name'}
           value={this.state.groupName}
           onChangeText={this.onGroupNameChange}
         />
         <TextInput
           style={styles.groupName}
-          placeholder="Group Type"
+          placeholder={'Group Type'}
           value={this.state.groupType}
           onChangeText={this.onGroupTypeChange}
         />
-        <TouchableOpacity
-          style={styles.addGroupButton}
-          onPress={this.placeSubmitHandler}>
+        <TouchableOpacity style={styles.addGroupButton} onPress={this.placeSubmitHandler}>
           <Text style={styles.addGroupButtonText}>Add Group</Text>
         </TouchableOpacity>
       </View>
