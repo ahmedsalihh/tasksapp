@@ -1,7 +1,7 @@
 import React from 'react';
-import {FlatList, View} from 'react-native';
+import { FlatList, View } from 'react-native';
 import GroupCard from './GroupCard';
-import {withNavigation} from 'react-navigation';
+import { withNavigation } from 'react-navigation';
 
 class GroupList extends React.Component {
   static navigationOptions = {
@@ -18,8 +18,8 @@ class GroupList extends React.Component {
     }
   }
 
-  handleSelectedItem = ({selectedItemId}) => {
-    this.props.setSelectedItemId({selectedItemId});
+  handleSelectedItem = ({ selectedItemId }) => {
+    this.props.setSelectedItemId({ selectedItemId });
     this.props.navigation.navigate('List');
   };
 
@@ -30,7 +30,10 @@ class GroupList extends React.Component {
           data={this.props.groups.groups}
           keyExtractor={(item, index) => index.toString()}
           renderItem={group => (
-            <GroupCard handleSelectedItem={this.handleSelectedItem} group={group.item} />
+            <GroupCard
+              handleSelectedItem={this.handleSelectedItem}
+              group={group.item}
+            />
           )}
         />
       </View>

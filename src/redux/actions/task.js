@@ -1,4 +1,4 @@
-import {LIST_TASKS, ADD_TASK, DELETE_TASK} from './types';
+import { LIST_TASKS, ADD_TASK, DELETE_TASK } from './types';
 import axios from 'axios';
 
 export const tasks = () => {
@@ -6,10 +6,16 @@ export const tasks = () => {
     axios
       .get('http://192.168.0.10:5000/api/v1/tasks')
       .then(res => {
-        dispatch({type: LIST_TASKS, payload: res.data.data});
+        dispatch({
+          type: LIST_TASKS,
+          payload: res.data.data,
+        });
       })
       .catch(err => {
-        dispatch({type: 'FETCH_TASKS_REJECTED', payload: err});
+        dispatch({
+          type: 'FETCH_TASKS_REJECTED',
+          payload: err,
+        });
       });
   };
 };
@@ -19,10 +25,16 @@ export const addTasks = task => {
     axios
       .post('http://192.168.0.10:5000/api/v1/tasks', task)
       .then(res => {
-        dispatch({type: ADD_TASK, payload: res.data.data});
+        dispatch({
+          type: ADD_TASK,
+          payload: res.data.data,
+        });
       })
       .catch(err => {
-        dispatch({type: 'FETCH_TASKS_REJECTED', payload: err});
+        dispatch({
+          type: 'FETCH_TASKS_REJECTED',
+          payload: err,
+        });
       });
   };
 };
@@ -32,10 +44,16 @@ export const deleteTask = id => {
     axios
       .delete(`http://192.168.0.10:5000/api/v1/tasks/${id}`)
       .then(res => {
-        dispatch({type: DELETE_TASK, payload: res.data.message});
+        dispatch({
+          type: DELETE_TASK,
+          payload: res.data.message,
+        });
       })
       .catch(err => {
-        dispatch({type: 'DELETE_TASKS_REJECTED', payload: err});
+        dispatch({
+          type: 'DELETE_TASKS_REJECTED',
+          payload: err,
+        });
       });
   };
 };

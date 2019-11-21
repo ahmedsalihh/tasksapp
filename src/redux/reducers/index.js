@@ -1,4 +1,4 @@
-import {combineReducers} from 'redux';
+import { combineReducers } from 'redux';
 import userReducer from './userReducer';
 import taskReducer from './taskReducer';
 import groupReducer from './groupReducer';

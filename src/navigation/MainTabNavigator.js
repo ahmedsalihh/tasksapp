@@ -1,9 +1,12 @@
 import React from 'react';
-import {createBottomTabNavigator} from 'react-navigation-tabs';
-import {createStackNavigator} from 'react-navigation-stack';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
+import { createStackNavigator } from 'react-navigation-stack';
 
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {faHome, faList} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import {
+  faHome,
+  faList,
+} from '@fortawesome/free-solid-svg-icons';
 
 import ListTasks from '../containers/task/ListTasks';
 import AddTask from '../containers/task/AddTask';
@@ -39,7 +42,9 @@ const HomeStack = createStackNavigator(
 
 HomeStack.navigationOptions = {
   tabBarLabel: 'Home',
-  tabBarIcon: ({focused}) => <FontAwesomeIcon icon={faHome} color="#e93766" />,
+  tabBarIcon: ({ focused }) => (
+    <FontAwesomeIcon icon={faHome} color="#e93766" />
+  ),
 };
 
 export default createBottomTabNavigator({

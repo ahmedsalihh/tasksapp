@@ -1,8 +1,8 @@
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 import GroupAdd from '../../components/group/GroupAdd';
 
-import {addGroup} from '../../redux/actions/group';
+import { addGroup } from '../../redux/actions/group';
 
 const mapStateToProps = state => {
   return {
@@ -12,8 +12,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addGroup: ({group}) => {
-      dispatch(addGroup({group}));
+    addGroup: ({ group }) => {
+      dispatch(addGroup({ group }));
     },
   };
 };

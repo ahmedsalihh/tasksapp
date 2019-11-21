@@ -1,7 +1,10 @@
 import { connect } from 'react-redux';
 import GroupList from '../../components/group/GroupList';
 
-import { listGroups, setSelectedItemId } from '../../redux/actions/group';
+import {
+  listGroups,
+  setSelectedItemId,
+} from '../../redux/actions/group';
 
 const mapStateToProps = state => {
   return {
@@ -20,4 +23,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(GroupList);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(GroupList);

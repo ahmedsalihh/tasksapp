@@ -1,5 +1,11 @@
 import React from 'react';
-import {StyleSheet, View, TextInput, TouchableOpacity, Text} from 'react-native';
+import {
+  StyleSheet,
+  View,
+  TextInput,
+  TouchableOpacity,
+  Text,
+} from 'react-native';
 
 export default class AddGroup extends React.Component {
   constructor(props) {
@@ -22,8 +28,8 @@ export default class AddGroup extends React.Component {
         groupName: this.state.groupName,
         groupType: this.state.groupType,
       };
-      this.props.addGroup({group});
-      this.setState({groupName: '', groupType: ''});
+      this.props.addGroup({ group });
+      this.setState({ groupName: '', groupType: '' });
     } catch (error) {
       console.log('Unknown Exception');
     }
@@ -35,7 +41,7 @@ export default class AddGroup extends React.Component {
     });
   };
   onGroupTypeChange = value => {
-    this.setState({groupType: value});
+    this.setState({ groupType: value });
   };
 
   render() {
@@ -53,8 +59,12 @@ export default class AddGroup extends React.Component {
           value={this.state.groupType}
           onChangeText={this.onGroupTypeChange}
         />
-        <TouchableOpacity style={styles.addGroupButton} onPress={this.placeSubmitHandler}>
-          <Text style={styles.addGroupButtonText}>Add Group</Text>
+        <TouchableOpacity
+          style={styles.addGroupButton}
+          onPress={this.placeSubmitHandler}>
+          <Text style={styles.addGroupButtonText}>
+            Add Group
+          </Text>
         </TouchableOpacity>
       </View>
     );

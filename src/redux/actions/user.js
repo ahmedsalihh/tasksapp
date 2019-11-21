@@ -1,4 +1,4 @@
-import {SAVE_USER, CLEAN_USER} from './types';
+import { SAVE_USER, CLEAN_USER } from './types';
 
 export const save = user => {
   return {

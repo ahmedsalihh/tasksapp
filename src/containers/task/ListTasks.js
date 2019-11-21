@@ -1,7 +1,10 @@
 import { connect } from 'react-redux';
 import TaskList from '../../components/task/TaskList';
 
-import { setChecked, listGroups } from '../../redux/actions/group';
+import {
+  setChecked,
+  listGroups,
+} from '../../redux/actions/group';
 
 const mapStateToProps = state => {
   return {
@@ -20,4 +23,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(TaskList);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(TaskList);

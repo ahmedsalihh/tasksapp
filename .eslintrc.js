@@ -1,9 +1,10 @@
 module.exports = {
   root: true,
-  extends: '@react-native-community',
+  extends: ['@react-native-community', 'prettier'],
+  plugins: ['prettier'],
   rules: {
     'react/jsx-filename-extension': 'off',
-    'prettier/prettier': ['error', {trailingComma: 'all', singleQuote: true}],
+    'prettier/prettier': ['error', { trailingComma: 'all', singleQuote: true }],
     'linebreak-style': ['error', 'unix'],
     'arrow-parens': [2, 'as-needed'],
     'react/prop-types': [0],

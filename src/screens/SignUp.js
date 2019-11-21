@@ -1,5 +1,4 @@
 import React from 'react';
-import {connect} from 'react-redux';
 import {
   StyleSheet,
   Text,
@@ -8,8 +7,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import firebase from 'react-native-firebase';
-import {save} from '../redux/actions/user';
-import {saveUser} from '../api/userApi';
+import { saveUser } from '../api/userApi';
 
 const styles = StyleSheet.create({
   container: {
@@ -26,9 +24,9 @@ const styles = StyleSheet.create({
     marginTop: 8,
     marginVertical: 15,
   },
-  signUpText: {color: '#e93766', fontSize: 40},
-  errorMessage: {color: 'red'},
-  login: {color: '#e93766', fontSize: 18},
+  signUpText: { color: '#e93766', fontSize: 40 },
+  errorMessage: { color: 'red' },
+  login: { color: '#e93766', fontSize: 18 },
   signUpButton: {
     backgroundColor: '#e93766',
     height: '8%',
@@ -46,25 +44,33 @@ const styles = StyleSheet.create({
 export default class SignUp extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {email: '', password: '', errorMessage: null};
+    this.state = {
+      email: '',
+      password: '',
+      errorMessage: null,
+    };
   }
 
   handleSignUp = async () => {
-    const {email, password} = this.state;
+    const { email, password } = this.state;
     if (email === '' || password === '') {
-      this.setState({errorMessage: 'Fill all the fields!!'});
+      this.setState({
+        errorMessage: 'Fill all the fields!!',
+      });
     } else {
       await firebase
         .auth()
         .createUserWithEmailAndPassword(email, password)
         .then(async () => {
-          const {currentUser: user} = firebase.auth();
+          const { currentUser: user } = firebase.auth();
           if (user !== undefined) {
-            await saveUser({user});
+            await saveUser({ user });
           }
           this.props.navigation.navigate('Home');
         })
-        .catch(error => this.setState({errorMessage: error.message}));
+        .catch(error =>
+          this.setState({ errorMessage: error.message }),
+        );
     }
   };
 
@@ -73,13 +79,15 @@ export default class SignUp extends React.Component {
       <View style={styles.container}>
         <Text style={styles.signUpText}>Sign Up</Text>
         {this.state.errorMessage && (
-          <Text style={styles.errorMessage}>{this.state.errorMessage}</Text>
+          <Text style={styles.errorMessage}>
+            {this.state.errorMessage}
+          </Text>
         )}
         <TextInput
           placeholder="Email"
           autoCapitalize="none"
           style={styles.textInput}
-          onChangeText={email => this.setState({email})}
+          onChangeText={email => this.setState({ email })}
           value={this.state.email}
         />
         <TextInput
@@ -87,26 +95,26 @@ export default class SignUp extends React.Component {
           placeholder="Password"
           autoCapitalize="none"
           style={styles.textInput}
-          onChangeText={password => this.setState({password})}
+          onChangeText={password =>
+            this.setState({ password })
+          }
           value={this.state.password}
         />
-        {/* <Button
-          title="Sign Up"
-          color="#e93766"
-          onPress={this.handleSignUp}
-          style={{width: '50%'}}
-        /> */}
         <TouchableOpacity
           style={styles.signUpButton}
           onPress={this.handleSignUp}>
-          <Text style={styles.signUpButtonText}>Sign Up</Text>
+          <Text style={styles.signUpButtonText}>
+            Sign Up
+          </Text>
         </TouchableOpacity>
         <View>
           <Text>
             {' '}
             Already have an account?{' '}
             <Text
-              onPress={() => this.props.navigation.navigate('Login')}
+              onPress={() =>
+                this.props.navigation.navigate('Login')
+              }
               style={styles.login}>
               {' '}
               Login{' '}

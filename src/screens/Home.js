@@ -1,5 +1,5 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import {
   StyleSheet,
   Text,
@@ -7,16 +7,17 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from 'react-native';
+import { FAB } from 'react-native-paper';
 import firebase from 'react-native-firebase';
-import {save, cleanUser} from '../redux/actions/user';
+import { save, cleanUser } from '../redux/actions/user';
 import ListGroups from '../containers/group/ListGroups';
 
 class Home extends React.Component {
-  state = {currentUser: null};
+  state = { currentUser: null };
 
   async componentDidMount() {
-    const {currentUser: user} = firebase.auth();
-    this.props.saveUser({user});
+    const { currentUser: user } = firebase.auth();
+    this.props.saveUser({ user });
   }
 
   handleLogout = () => {
@@ -34,11 +35,12 @@ class Home extends React.Component {
         <SafeAreaView>
           <ListGroups />
         </SafeAreaView>
-        <TouchableOpacity
-          style={styles.addGroupButton}
-          onPress={this.handleAddGroupClick}>
-          <Text style={styles.addGroupButtonText}>+</Text>
-        </TouchableOpacity>
+        <FAB
+          style={styles.fab}
+          small
+          icon={'plus'}
+          onPress={this.handleAddGroupClick}
+        />
       </View>
     );
   }
@@ -70,16 +72,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  addGroupButton: {
-    borderRadius: 400,
-    height: 50,
-    width: 50,
+  fab: {
     position: 'absolute',
-    bottom: 5,
-    right: 8,
+    margin: 16,
+    right: 0,
+    bottom: 0,
+    height: 55,
+    width: 55,
     backgroundColor: '#cf1748',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  addGroupButtonText: {color: 'white', fontSize: 50},
 });

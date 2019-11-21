@@ -26,7 +26,10 @@ export default class AddScreen extends React.Component {
       return;
     }
     const task = { name: taskName, desc: taskDesc };
-    this.props.addTaskToGroup({ task, groupId: this.props.groupId });
+    this.props.addTaskToGroup({
+      task,
+      groupId: this.props.groupId,
+    });
     this.setState({ taskName: '', taskDesc: '' });
   };
 
@@ -37,13 +40,17 @@ export default class AddScreen extends React.Component {
           style={styles.taskName}
           placeholder={'Task Name'}
           value={this.state.taskName}
-          onChangeText={val => this.setState({ taskName: val })}
+          onChangeText={val =>
+            this.setState({ taskName: val })
+          }
         />
         <TextInput
           style={styles.taskName}
           placeholder={'Task Description'}
           value={this.state.taskDesc}
-          onChangeText={val => this.setState({ taskDesc: val })}
+          onChangeText={val =>
+            this.setState({ taskDesc: val })
+          }
         />
         <TouchableOpacity
           style={styles.addButton}
